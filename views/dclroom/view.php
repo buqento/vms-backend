@@ -2,25 +2,26 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Dclroom */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Lantai', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ruangan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="dclfloor-view">
+<div class="dclroom-view">
 
     <h1>#<?= Html::encode($this->title) ?></h1>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
             [
-                'attribute' => 'building_id',
+                'attribute' => 'floor_id',
                 'value' => function($data){
-                    return $data->building->name;
+                    return $data->floor->name;
                 }
             ],
         ],

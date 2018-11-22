@@ -52,8 +52,6 @@ class DcldestinationController extends Controller
             $model->company_name = $post['company_name'];
             $model->open_hour = $post['open_hour'];
             $model->close_hour = $post['close_hour'];
-            $model->build_id = $post['build_id'];
-            $model->floor_id = $post['floor_id'];
             $model->phone = $post['phone'];
             $model->email = $post['email'];
             $model->profile = $post['profile'];
@@ -78,8 +76,6 @@ class DcldestinationController extends Controller
             $model->company_name = $post['company_name'];
             $model->open_hour = $post['open_hour'];
             $model->close_hour = $post['close_hour'];
-            $model->build_id = $post['build_id'];
-            $model->floor_id = $post['floor_id'];
             $model->phone = $post['phone'];
             $model->email = $post['email'];
             $model->profile = $post['profile'];

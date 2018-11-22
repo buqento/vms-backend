@@ -2,11 +2,14 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Tambah Data';
-$this->params['breadcrumbs'][] = ['label' => 'Lokasi', 'url' => ['index']];
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Dclroom */
+
+$this->title = 'Tambah Ruangan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="dclbuilding-create">
+<div class="dclroom-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

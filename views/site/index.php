@@ -6,7 +6,7 @@ use yii\grid\GridView;
 ?>
 <div>
         <div>
-        
+
             <div class="col-lg-4 col-md-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-red"><i class="fa fa-building"></i></span>
@@ -96,16 +96,19 @@ use yii\grid\GridView;
                         'labels' => $label,
                         'datasets' => [
                             [
-                                // 'label' => false,
+                                'label' => $label,
                                 'backgroundColor' => 
                                 [
-                                    '#d35400',
-                                    '#f39c12',
-                                    '#2ecc71',
-                                    '#16a085',
-                                    '#3498db',
-                                    '#e74c3c',
-                                    '#566573'
+                                    '#f1c40f',
+                                    '#27ae60',
+                                    '#1abc9c',
+                                    '#2980b9',
+                                    '#9b59b6',
+                                    '#c0392b',
+                                    '#34495e',
+                                    '#95a5a6',
+                                    '#ecf0f1',
+                                    '#e67e22'
                                 ],
                                 'borderWidth' => 0,
                                 // 'borderColor' => [

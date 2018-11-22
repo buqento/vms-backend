@@ -14,59 +14,37 @@ use kartik\time\TimePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
+<div class="col-md-4">
     <?= $form->field($model, 'company_name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'open_hour')->widget(TimePicker::classname(), []) ?>
 
     <?= $form->field($model, 'close_hour')->widget(TimePicker::classname(), []) ?>
 
-    <?php 
-        $building = Dclbuilding::find()
-            ->select(['name'])
-            ->indexBy('id')
-            ->column();
-
-        echo $form->field($model, 'build_id')->widget(Select2::classname(), [
-            'data' => $building,
-            'language' => 'en',
-        ]);
-    ?>
-
-    <?php 
-        $floor = Dclfloor::find()
-            ->select(['floor'])
-            ->indexBy('id')
-            ->column();
-
-        echo $form->field($model, 'floor_id')->widget(Select2::classname(), [
-            'data' => $floor,
-            'language' => 'en',
-        ]);
-    ?>
-
     <?= $form->field($model, 'phone')->textInput() ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'profile')->widget(CKEditor::className(), [
-        'options' => ['rows' => 3],
-        'preset' => 'basic'
-    ]) ?>
+</div>
+<div class="col-md-4">    
+
+    <?= $form->field($model, 'profile')->textarea(['rows' => 10]) ?>
+
+    <?= $form->field($model, 'address')->textarea(['rows' => 3]) ?>
+
+</div>
+<div class="col-md-4">
+
 
     <?= $form->field($model, 'picture')->widget(FileInput::classname(), [
             'options' => ['accept' => 'image/*'],
         ])
     ?>
-
-    <?= $form->field($model, 'address')->widget(CKEditor::className(), [
-        'options' => ['rows' => 3],
-        'preset' => 'basic'
-    ]) ?>
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-
+</div>
+<div class="col-md-4">
     <?php ActiveForm::end(); ?>
 
 </div>

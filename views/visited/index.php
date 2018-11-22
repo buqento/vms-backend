@@ -62,6 +62,28 @@ if(!empty($_GET['v'])){
             // 'long_visit',
             // 'additional_info:ntext',
             //'created',
+            [
+                'attribute' => 'status',
+                'value' => 
+                    function($data)
+                        {
+                            switch ($data->status) {
+                                case 1:
+                                    $vStatus = 'Disetujui';
+                                    break;
+                                case 2:
+                                    $vStatus = 'Ditolak';
+                                    break;
+                                
+                                default:
+                                    $vStatus = 'Pending';
+                                    break;
+                            }
+                            return $vStatus;
+                        }
+            ], 
+
+           
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
                 'buttons' => [

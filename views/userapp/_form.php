@@ -12,10 +12,8 @@ use timurmelnikov\widgets\WebcamShoot;
 
     <?php $form = ActiveForm::begin(); ?>
 
-<div class="col-md-6">
+<div class="col-md-4">
 
-    <h4>Data Profil</h4>
-    <hr>
     <?= $form->field($model, 'guest_name')->textInput(['maxlength' => true]) ?>
 
     <?php 
@@ -40,7 +38,8 @@ use timurmelnikov\widgets\WebcamShoot;
             'language' => 'en'
         ]);
     ?>
-    
+</div>
+<div class="col-md-4">
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
@@ -56,7 +55,7 @@ use timurmelnikov\widgets\WebcamShoot;
     <?= $form->field($model, 'photo')->hiddenInput(['id' => 'photo'])->label(false) ?>
 
 </div>
-<div class="col-md-6">
+<div class="col-md-4">
     <h4>Data Login</h4>
     <hr>
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>

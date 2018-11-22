@@ -3,9 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-$this->title = 'Tenant';
+$this->title = 'Ruangan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="dclroom-index">
 
     <div>
         <div class="col-md-6 text-left">
@@ -21,22 +22,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'summary' => false,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'company_name',
-            'open_hour',
-            'close_hour',
-            //'phone',
-            //'email:email',
-            //'profile:ntext',
-            //'picture',
-            //'address:ntext',
-
+            'name',
+            [
+                'attribute' => 'tenant_id',
+                'value' => function($data){
+                    return $data->tenant->company_name;
+                }
+            ],
+            [
+                'attribute' => 'floor_id',
+                'value' => function($data){
+                    return $data->floor->name;
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
+</div>

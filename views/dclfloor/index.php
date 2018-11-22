@@ -11,32 +11,33 @@ $this->title = 'Lantai';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-
     <div>
         <div class="col-md-6 text-left">
-            <h3>
-            <?= Html::encode($this->title) ?> 
-            <span class="glyphicon glyphicon glyphicon-menu-right"></span>
-            <small class="text-muted">Daftar</small>
-            </h3>
+            <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-md-6 text-right">
             <p>
             <br>
-            <?= Html::a('Tambah', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
             </p>
         </div>
     <div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'summary' => false,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'floor',
+            'name',
+            [
+                'attribute' => 'building_id',
+                'value' => function($data){
+                    return $data->building->name;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

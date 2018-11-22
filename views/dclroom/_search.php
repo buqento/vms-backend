@@ -3,9 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+/* @var $this yii\web\View */
+/* @var $model app\models\DclroomSearch */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="dcldestination-search">
+<div class="dclroom-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -14,21 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'company_name') ?>
+    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'open_hour') ?>
-
-    <?= $form->field($model, 'close_hour') ?>
-
-    <?php // echo $form->field($model, 'phone') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'profile') ?>
-
-    <?php // echo $form->field($model, 'picture') ?>
-
-    <?php // echo $form->field($model, 'address') ?>
+    <?= $form->field($model, 'floor_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -63,27 +63,14 @@ class SiteController extends Controller
         $visited = Visited::find()->count();
 
         //view table
-        $query = SummaryVisit::find();
+        $query = SummaryVisit::find()->orderBy(['jumlah' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         //view graphic
+        $lines = SummaryVisit::find()->asArray()->all();
         $rows = 0;
-        $query = "
-        SELECT 
-            visited.destination_id, 
-            dcl_destination.company_name, 
-            COUNT(visited.id) AS jumlah FROM visited
-        INNER JOIN dcl_destination 
-        ON visited.destination_id = dcl_destination.id
-        GROUP BY visited.destination_id
-        ORDER BY dcl_destination.company_name
-        ";
-        $model = Yii::$app->db->createCommand($query);
-        $lines = $model->queryAll();
-        $label = array();
-        $data = array();
         foreach ($lines as $line) {
             $label[] = $line['company_name'];
             $data[] = $line['jumlah'];
@@ -98,7 +85,7 @@ class SiteController extends Controller
             'visited' => $visited,
             'dataProvider' => $dataProvider,
             'label' => $label,
-            'data' => $data
+            'data' => $data,
         ]);
     }
 

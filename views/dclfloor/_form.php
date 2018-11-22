@@ -2,20 +2,25 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Dclfloor */
-/* @var $form yii\widgets\ActiveForm */
+use kartik\select2\Select2;
+use app\models\DclBuilding;
 ?>
 
 <div class="dclfloor-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'floor')->textInput(['maxlength' => true]) ?>
+    <?php 
+        $building_id = DclBuilding::find()->select(['name'])->indexBy('id')->column();
+        echo $form->field($model, 'building_id')->widget(Select2::classname(), [
+            'data' => $building_id
+        ]);
+    ?>
+
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Dclfloor;
+use app\models\Dclroom;
 
 /**
- * DclfloorSearch represents the model behind the search form of `app\models\Dclfloor`.
+ * DclroomSearch represents the model behind the search form of `app\models\Dclroom`.
  */
-class DclfloorSearch extends Dclfloor
+class DclroomSearch extends Dclroom
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class DclfloorSearch extends Dclfloor
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'floor_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class DclfloorSearch extends Dclfloor
      */
     public function search($params)
     {
-        $query = Dclfloor::find();
+        $query = Dclroom::find();
 
         // add conditions that should always apply here
 
@@ -57,9 +57,14 @@ class DclfloorSearch extends Dclfloor
             return $dataProvider;
         }
 
+        $query->orderBy([
+            'tenant_id' => SORT_ASC,
+        ]);
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'floor_id' => $this->floor_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
